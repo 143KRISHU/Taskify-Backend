@@ -76,6 +76,7 @@ const logInUser = asyncHandler(async function (req, res, next) {
                         200,
                         {
                               data: UserLoggedIn,
+                              accessToken:accessToken
                         },
                         "You are SuccessFully LoggedIn"
                   )
