@@ -1,0 +1,18 @@
+import asyncHandler from "../../utils/asyncHandler.js"
+import apiResponse from "../../utils/apiResponse.js"
+import Board from "../../models/board.model.js"
+import Task from "../../models/task.models.js"
+import ApiError from "../../utils/apiError.js"
+
+const getAllTaskOfCurrentBoard = asyncHandler(async(req,res)=>{
+      const {boardID} = req.body
+      try {
+            const allTasks = await Task.find({ board: boardID }).sort({ createdAt: -1 })
+            res.status(200).json(
+                  new apiResponse(200, { allTasks }, "Success")
+            )
+      } catch (error) {
+            res.status(500).json(new ApiError(500,`${error.message}`))
+      }
+})
+export default getAllTaskOfCurrentBoard
