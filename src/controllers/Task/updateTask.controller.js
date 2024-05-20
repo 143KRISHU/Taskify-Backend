@@ -8,7 +8,7 @@ const updateTask  = asyncHandler(async(req,res)=>{
       try {
             const updatedTask = await Task.findByIdAndUpdate(id,{title:title,description:description},{new:true})
             res.status(200).json(
-                  new apiResponse(200, { updatedTask }, "Task Upadted Successfully")
+                  new apiResponse(200, { updatedTask }, "Task Updated Successfully")
             )
             
       } catch (error) {

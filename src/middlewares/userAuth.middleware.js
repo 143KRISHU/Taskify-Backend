@@ -5,10 +5,8 @@ import User from "../models/user.model.js";
 
 const verifyUser = asyncHandler(async (req, res, next) => {
       try {
-            console.log(req.cookies)
             const token = req.cookies?.accessToken ||
                   req.header("Authorizarion")?.replace("Bearer ", "");
-            console.log(token)
             if (!token) {
                   res
                         .status(401)
